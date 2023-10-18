@@ -30,6 +30,7 @@ input{
     height: 15%;
     background-color: rgb(208, 231, 210);
     border-radius: 5px;
+    border-style: none;
 }
 
 .size-container{
@@ -51,7 +52,7 @@ input{
     align-items: stretch;
     flex-direction: column;
     flex-grow: 1;
-    gap: 5px;
+    gap: 35px;
     background-color: rgb(97, 130, 100);;
     padding: 10px;
     padding-top: 30px;
