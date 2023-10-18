@@ -11,23 +11,33 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(208, 231, 210)
 }
 
 button{
     flex-basis: calc(100% / 4);
     width: auto;
+    border-radius: 5px;
+    border-style: solid black;
+    border-width: .5px;
+    background-color: rgb(121, 172, 120);
+    color: rgb(208, 231, 210);
+    font-size: 40px;
+    font-weight: bold;
 }
 
 input{
     height: 15%;
+    background-color: rgb(208, 231, 210);
+    border-radius: 5px;
 }
 
 .size-container{
     display: flex;
     justify-content: center;
     align-items: stretch;
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     margin: 0 auto;
     position: absolute;
     top: 50%;
@@ -42,9 +52,11 @@ input{
     flex-direction: column;
     flex-grow: 1;
     gap: 5px;
-    background-color: cadetblue;
+    background-color: rgb(97, 130, 100);;
     padding: 10px;
     padding-top: 30px;
+    border-radius: 5px;
+    box-shadow: 8px 4px rgb(70, 94, 72);
 }
 
 .buttons-container{
