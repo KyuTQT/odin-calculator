@@ -18,7 +18,16 @@ let hasPressedNumber = false;
 
 addButton.addEventListener('click', add);
 equalsButton.addEventListener('click', () => {
-    operate(currentNumber, previousNumber, currentOperator);
+    hasPressedNumber = false;
+    if(hasComputed){
+        operate(results, currentNumber, currentOperator);
+        previousNumber = '';
+    }
+    else{
+        operate(currentNumber, previousNumber, currentOperator);
+        previousNumber = '';
+    }
+    
 })
 
 clearButton.addEventListener('click', ()=>{
@@ -68,9 +77,9 @@ function operate(a, b, operator){
             b = parseInt(b);
             results = a + b;
             userInput.value = results;
-            previousNumber = results;
             if(!hasComputed){
                 hasComputed = true;
+                count = 1;
             }
             break;
         
@@ -92,10 +101,10 @@ function operate(a, b, operator){
 }
 
 function add(){
-    if(hasPressedNumber){
-        count++;
         currentOperator = 'add';
         clearInput = true;
+    if(hasPressedNumber){
+        count++;
         if(!hasComputed && count > 2){
             computeNow = true;
             operate(previousNumber, currentNumber, currentOperator);
