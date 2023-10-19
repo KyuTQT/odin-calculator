@@ -1,17 +1,26 @@
 let userInput = document.querySelector('#user-input');
 let clearButton = document.querySelector('.CA-button');
 let equalsButton = document.querySelector('.equals');
-let buttonContainer = document.querySelector('.buttons-container')
+let buttonContainer = document.querySelector('.buttons-container');
 
-let currentOperator = null;
+let addButton = document.querySelector('#add');
+
+let currentOperator = '';
 let currentNumber = '';
 let previousNumber = '';
 let results = 0;
+let clearInput = false;
+let hasComputed = false;
 
+
+addButton.addEventListener('click', add);
+equalsButton.addEventListener('click', () => {
+    operate(currentNumber, previousNumber, currentOperator);
+})
 
 clearButton.addEventListener('click', ()=>{
-    userInput.textContent = '0';
-    currentOperator = null;
+    userInput.value = '0';
+    currentOperator = '';
     currentNumber = '';
     previousNumber = '';
     results = '';
@@ -20,15 +29,26 @@ clearButton.addEventListener('click', ()=>{
 
 buttonContainer.addEventListener('click', function(e){
     if(!isNaN(e.target.value)){
-        currentNumber+= e.target.value;
-        userInput.value = currentNumber;
+        if(clearInput){
+            previousNumber = currentNumber;
+            currentNumber = e.target.value;
+            userInput.value = currentNumber;
+            clearInput = false;
+        }
+        else{
+            currentNumber+= e.target.value;
+            userInput.value = currentNumber;
+        }
     }
 })
 
 function operate(a, b, operator){
     switch (operator) {
         case 'add':
-            
+            a = parseInt(a);
+            b = parseInt(b);
+            results = a + b;
+            userInput.value = results;
             break;
         
         case 'subtract':
@@ -48,22 +68,22 @@ function operate(a, b, operator){
     }
 }
 
-function add(a, b){
-    return a + b;
+function add(){
+    currentOperator = 'add';
+    clearInput = true;
 }
 
 function subtract(a, b){
-    return a - b;
+    currentOperator = 'subtract';
+    clearInput = true;
 }
 
 function multiply(a, b){
-    return a * b;
+    currentOperator = 'multiply';
+    clearInput = true;
 }
 
 function divide(a, b){
-    if(b === 0){
-        'Error!';
-        return;
-    }
-    return a / b
+    currentOperator = 'divide';
+    clearInput = true;
 }
