@@ -69,3 +69,6 @@ input{
     flex-grow: 1;
     flex-wrap: wrap;
 }
+.CA-button{
+    flex-basis: 100%;
+}
