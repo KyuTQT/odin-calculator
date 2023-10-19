@@ -101,8 +101,9 @@ function operate(a, b, operator){
 }
 
 function add(){
-        currentOperator = 'add';
-        clearInput = true;
+    currentOperator = 'add';
+    clearInput = true;
+    
     if(hasPressedNumber){
         count++;
         if(!hasComputed && count > 2){
