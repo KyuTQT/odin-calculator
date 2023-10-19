@@ -1,21 +1,29 @@
 let userInput = document.querySelector('#user-input');
 let clearButton = document.querySelector('.CA-button');
-let equalsButton = document.querySelector('.equals')
+let equalsButton = document.querySelector('.equals');
+let buttonContainer = document.querySelector('.buttons-container')
 
 let currentOperator = null;
-let currentNumber = 0;
-let previousNumber = 0;
+let currentNumber = '';
+let previousNumber = '';
 let results = 0;
 
 
 clearButton.addEventListener('click', ()=>{
     userInput.textContent = '0';
     currentOperator = null;
-    currentNumber = 0;
-    previousNumber = 0;
-    results = 0;
+    currentNumber = '';
+    previousNumber = '';
+    results = '';
 } )
 
+
+buttonContainer.addEventListener('click', function(e){
+    if(!isNaN(e.target.value)){
+        currentNumber+= e.target.value;
+        userInput.value = currentNumber;
+    }
+})
 
 function operate(a, b, operator){
     switch (operator) {
