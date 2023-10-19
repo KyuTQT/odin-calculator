@@ -8,9 +8,12 @@ let addButton = document.querySelector('#add');
 let currentOperator = '';
 let currentNumber = '';
 let previousNumber = '';
-let results = 0;
+let results = null;
 let clearInput = false;
+let count = 1;
 let hasComputed = false;
+let computeNow = false;
+let hasPressedNumber = false;
 
 
 addButton.addEventListener('click', add);
@@ -25,22 +28,36 @@ clearButton.addEventListener('click', ()=>{
     previousNumber = '';
     results = '';
     clearInput = false;
-    hasComputed = false;
 } )
 
 
 buttonContainer.addEventListener('click', function(e){
     if(!isNaN(e.target.value)){
-        if(clearInput){
-            previousNumber = currentNumber;
-            currentNumber = e.target.value;
-            userInput.value = currentNumber;
-            clearInput = false;
+        hasPressedNumber = true;
+        if(!hasComputed){
+            if(clearInput){
+                previousNumber = currentNumber;
+                currentNumber = e.target.value;
+                userInput.value = currentNumber;
+                clearInput = false;
+            }
+            else{
+                currentNumber+= e.target.value;
+                userInput.value = currentNumber;
+            }
         }
         else{
-            currentNumber+= e.target.value;
-            userInput.value = currentNumber;
+            if(clearInput){
+                currentNumber = e.target.value;
+                userInput.value = currentNumber;
+                clearInput = false;
+            }
+            else{
+                currentNumber+= e.target.value;
+                userInput.value = currentNumber;
+            }
         }
+        
     }
 })
 
@@ -51,6 +68,10 @@ function operate(a, b, operator){
             b = parseInt(b);
             results = a + b;
             userInput.value = results;
+            previousNumber = results;
+            if(!hasComputed){
+                hasComputed = true;
+            }
             break;
         
         case 'subtract':
@@ -71,8 +92,20 @@ function operate(a, b, operator){
 }
 
 function add(){
-    currentOperator = 'add';
-    clearInput = true;
+    if(hasPressedNumber){
+        count++;
+        currentOperator = 'add';
+        clearInput = true;
+        if(!hasComputed && count > 2){
+            computeNow = true;
+            operate(previousNumber, currentNumber, currentOperator);
+        }
+        else if(hasComputed){
+            operate(results, currentNumber, currentOperator);
+        }
+    }
+    hasPressedNumber = false;
+    
 }
 
 function subtract(a, b){
