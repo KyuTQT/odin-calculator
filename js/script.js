@@ -1,5 +1,6 @@
 let userInput = document.querySelector('#user-input');
 let clearButton = document.querySelector('.CA-button');
+let equalsButton = document.querySelector('.equals')
 
 let currentOperator = null;
 let currentNumber = 0;
