@@ -24,6 +24,8 @@ clearButton.addEventListener('click', ()=>{
     currentNumber = '';
     previousNumber = '';
     results = '';
+    clearInput = false;
+    hasComputed = false;
 } )
 
 
