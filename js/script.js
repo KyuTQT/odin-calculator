@@ -9,7 +9,6 @@ let multiplyButton = document.querySelector('#multiply');
 let divideButton = document.querySelector('#divide');
 
 let currentOperator = '';
-let previousOperator = '';
 let currentNumber = '';
 let previousNumber = '';
 let results = null;
@@ -45,7 +44,6 @@ equalsButton.addEventListener('click', () => {
 clearButton.addEventListener('click', ()=>{
     userInput.value = '0';
     currentOperator = '';
-    previousOperator = '';
     currentNumber = '';
     previousNumber = '';
     results = null;
@@ -69,19 +67,15 @@ buttonContainer.addEventListener('click', function(e){
                 previousNumber =  e.target.value;;
                 userInput.value = previousNumber;
                 clearInput = false;
-                console.log(`previous number: ${previousNumber}`);
-                console.log(`current number: ${currentNumber}`);
             }
             else{
                 if(onPreviousNumber){
                     previousNumber+= e.target.value;
                     userInput.value = previousNumber;
-                    console.log(`current number on else: ${previousNumber}`);
                 }
                 else{
                     currentNumber+= e.target.value;
                     userInput.value = currentNumber;
-                    console.log(`current number on else: ${currentNumber}`);
                 }
                 
             }
@@ -184,21 +178,26 @@ function evaluate(){
 }
 
 function add(){
-    currentOperator = 'add';
     evaluate();
+    currentOperator = 'add';
+    
+
 }
 
 function subtract(){
-    currentOperator = 'subtract';
     evaluate();
+    currentOperator = 'subtract';
+
 }
 
 function multiply(){
-    currentOperator = 'multiply';
     evaluate();
+    currentOperator = 'multiply';
+
 }
 
 function divide(){
-    currentOperator = 'divide';
     evaluate();
+    currentOperator = 'divide';
+
 }
