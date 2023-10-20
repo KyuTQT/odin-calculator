@@ -7,6 +7,7 @@ let addButton = document.querySelector('#add');
 let subtractButton = document.querySelector('#subtract');
 let multiplyButton = document.querySelector('#multiply');
 let divideButton = document.querySelector('#divide');
+let decimalButton = document.querySelector('#decimal');
 
 let currentOperator = '';
 let currentNumber = '';
@@ -18,12 +19,26 @@ let hasComputed = false;
 let computeNow = false;
 let hasPressedNumber = false;
 let onPreviousNumber = false;
+let hasDecimal = false;
 
 
 addButton.addEventListener('click', add);
 subtractButton.addEventListener('click', subtract);
 multiplyButton.addEventListener('click', multiply);
 divideButton.addEventListener('click', divide);
+decimalButton.addEventListener('click', ()=>{
+    if(!hasDecimal){
+        hasDecimal = true;
+        if(!previousNumber){
+            currentNumber+='.';
+            userInput.value = currentNumber;
+        }
+        else{
+            previousNumber+='.';
+            userInput.value = previousNumber;
+        }
+    }
+});
 
 equalsButton.addEventListener('click', () => {
     if(results === 'ERROR'){
@@ -39,7 +54,7 @@ equalsButton.addEventListener('click', () => {
         previousNumber = '';
     }
     
-})
+});
 
 clearButton.addEventListener('click', ()=>{
     userInput.value = '0';
@@ -53,7 +68,8 @@ clearButton.addEventListener('click', ()=>{
     computeNow = false;
     hasPressedNumber = false;
     onPreviousNumber = false;
-} )
+    hasDecimal = false;
+});
 
 
 buttonContainer.addEventListener('click', function(e){
@@ -93,7 +109,7 @@ buttonContainer.addEventListener('click', function(e){
         }
         
     }
-})
+});
 
 function operate(a, b, operator){
     if(results === 'ERROR'){
@@ -136,7 +152,6 @@ function operate(a, b, operator){
         case 'divide':
             a = parseInt(a);
             b = parseInt(b);
-            console.log(b);
             if(b === 0){
                 results = 'ERROR';
                 userInput.value = results;
@@ -159,6 +174,7 @@ function evaluate(){
     if(results === 'ERROR'){
         return;
     }
+    hasDecimal = false;
     clearInput = true;
     onPreviousNumber = true;
 
@@ -180,8 +196,6 @@ function evaluate(){
 function add(){
     evaluate();
     currentOperator = 'add';
-    
-
 }
 
 function subtract(){
