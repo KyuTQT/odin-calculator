@@ -18,12 +18,15 @@ button{
     flex-basis: calc(100% / 4);
     width: auto;
     border-radius: 5px;
-    border-style: solid black;
-    border-width: .5px;
+    border-style: solid rgba(0, 0, 0, 0.007);
+    border-width: .01px;
     background-color: rgb(121, 172, 120);
     color: rgb(208, 231, 210);
     font-size: 40px;
     font-weight: bold;
+}
+button:active{
+    background-color: rgb(97, 130, 100);
 }
 
 input{
@@ -69,6 +72,14 @@ input{
     flex-grow: 1;
     flex-wrap: wrap;
 }
+
+.operands{
+    background-color: rgb(200, 174, 125);
+}
+.operands:active{
+    background-color: rgb(192, 146, 71);
+}
+
 .CA-button{
     flex-basis: 100%;
 }
