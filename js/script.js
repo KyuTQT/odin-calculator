@@ -117,8 +117,8 @@ function operate(a, b, operator){
     }
     switch (operator) {
         case 'add':
-            a = parseInt(a);
-            b = parseInt(b);
+            a = parseFloat(a);
+            b = parseFloat(b);
             results = a + b;
             userInput.value = results;
             if(!hasComputed){
@@ -128,8 +128,8 @@ function operate(a, b, operator){
             break;
         
         case 'subtract':
-            a = parseInt(a);
-            b = parseInt(b);
+            a = parseFloat(a);
+            b = parseFloat(b);
             results = a - b;
             userInput.value = results;
             if(!hasComputed){
@@ -139,8 +139,8 @@ function operate(a, b, operator){
             break;
         
         case 'multiply':
-            a = parseInt(a);
-            b = parseInt(b);
+            a = parseFloat(a);
+            b = parseFloat(b);
             results = a * b;
             userInput.value = results;
             if(!hasComputed){
@@ -150,8 +150,8 @@ function operate(a, b, operator){
             break;
         
         case 'divide':
-            a = parseInt(a);
-            b = parseInt(b);
+            a = parseFloat(a);
+            b = parseFloat(b);
             if(b === 0){
                 results = 'ERROR';
                 userInput.value = results;
